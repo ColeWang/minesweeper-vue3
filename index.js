@@ -86,7 +86,7 @@ window.onload = () => {
       })
 
       function isStyle (item) {
-        const end = item.end && !!item.end
+        const end = item.end && !!item.end // 触发点标识
         const open = !item.open && !item.label && 'open'
         const label = item.label && 'a10'
         return end ? 'end' : `a${item.state} ${open || label}`
@@ -128,12 +128,7 @@ window.onload = () => {
             item.end = true // 标识触发点
             failGame()
           } else {
-            if (item.state === 0) {
-              reactionChain(item.row, item.col)
-            } else {
-              data.isOpen++
-              item.open = true
-            }
+            reactionChain(item.row, item.col)
           }
         }
       }
